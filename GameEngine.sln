@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameEngine", "GameEngine\GameEngine.csproj", "{B5C27857-B002-4434-9274-B5981FA728AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameEngine.Tests", "GameEngine.Tests\GameEngine.Tests.csproj", "{BCE97A04-09FC-45B7-BDCE-ABB41C36CF89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5C27857-B002-4434-9274-B5981FA728AC}.Debug|x64.ActiveCfg = Debug|x64
+		{B5C27857-B002-4434-9274-B5981FA728AC}.Debug|x64.Build.0 = Debug|x64
+		{B5C27857-B002-4434-9274-B5981FA728AC}.Debug|x86.ActiveCfg = Debug|x64
+		{B5C27857-B002-4434-9274-B5981FA728AC}.Release|x64.ActiveCfg = Release|x64
+		{B5C27857-B002-4434-9274-B5981FA728AC}.Release|x64.Build.0 = Release|x64
+		{B5C27857-B002-4434-9274-B5981FA728AC}.Release|x86.ActiveCfg = Release|x64
+		{BCE97A04-09FC-45B7-BDCE-ABB41C36CF89}.Debug|x64.ActiveCfg = Debug|x64
+		{BCE97A04-09FC-45B7-BDCE-ABB41C36CF89}.Debug|x64.Build.0 = Debug|x64
+		{BCE97A04-09FC-45B7-BDCE-ABB41C36CF89}.Debug|x86.ActiveCfg = Debug|x64
+		{BCE97A04-09FC-45B7-BDCE-ABB41C36CF89}.Release|x64.ActiveCfg = Release|x64
+		{BCE97A04-09FC-45B7-BDCE-ABB41C36CF89}.Release|x64.Build.0 = Release|x64
+		{BCE97A04-09FC-45B7-BDCE-ABB41C36CF89}.Release|x86.ActiveCfg = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45D25DF4-5EB0-4879-93EE-D9F0F650FFC9}
+	EndGlobalSection
+EndGlobal
