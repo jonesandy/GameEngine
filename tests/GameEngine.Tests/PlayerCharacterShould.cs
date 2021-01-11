@@ -54,5 +54,23 @@ namespace GameEngine.Tests
 
             Assert.Equal("John Smith", sut.FullName, ignoreCase: true);
         }
+
+        [Fact]
+        public void StartWithDefaultHealth()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.Equal(100, sut.Health);
+        }
+
+        [Fact]
+        public void IncreasesInHealthAfterSleep()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            sut.Sleep();
+
+            Assert.InRange(sut.Health, 101, 200);
+        }
     }
 }
