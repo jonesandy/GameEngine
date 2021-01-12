@@ -53,6 +53,7 @@ namespace GameEngine.Tests
             sut.LastName = "SMITH";
 
             Assert.Equal("John Smith", sut.FullName, ignoreCase: true);
+            Assert.StartsWith("John", sut.FullName, StringComparison.OrdinalIgnoreCase);
         }
 
         [Fact]
@@ -71,6 +72,46 @@ namespace GameEngine.Tests
             sut.Sleep();
 
             Assert.InRange(sut.Health, 101, 200);
+        }
+
+        [Fact]
+        public void NotHaveANicknameOnStart()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.Null(sut.Nickname);
+        }
+
+        [Fact]
+        public void HaveALongBowOnCreation()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.Contains("Long Bow", sut.Weapons);
+        }
+
+        [Fact]
+        public void DoesNotHaveAGun()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.DoesNotContain("Gun", sut.Weapons);
+        }
+
+        [Fact]
+        public void DoesHaveOneTypeOfSword()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.Contains(sut.Weapons, weapon => weapon.Contains("Sword"));
+        }
+
+        [Fact]
+        public void HaveNoEmptyDefaultWeapons()
+        {
+            PlayerCharacter sut = new PlayerCharacter();
+
+            Assert.All(sut.Weapons, weapon => Assert.False(string.IsNullOrWhiteSpace(weapon)));
         }
     }
 }
