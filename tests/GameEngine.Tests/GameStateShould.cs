@@ -18,6 +18,10 @@ namespace GameEngine.Tests
         public void DamageAllPlayersWhenEarthquake()
         {
             _output.WriteLine($"Using gamestate {_gameState.State.Id}");
+            foreach (var x in _gameState.State.Players)
+            {
+                _output.WriteLine(x.Nickname);
+            }
 
             var player1 = new PlayerCharacter();
             var player2 = new PlayerCharacter();
@@ -44,14 +48,18 @@ namespace GameEngine.Tests
         public void Reset()
         {
             _output.WriteLine($"Using gamestate {_gameState.State.Id}");
+            foreach (var x in _gameState.State.Players)
+            {
+                _output.WriteLine(x.Nickname);
+            }
 
-            var player1 = new PlayerCharacter();
-            var player2 = new PlayerCharacter();
-            player1.Nickname = "George";
-            player2.Nickname = "Ringo";
+            var player3 = new PlayerCharacter();
+            var player4 = new PlayerCharacter();
+            player3.Nickname = "George";
+            player4.Nickname = "Ringo";
 
-            _gameState.State.Players.Add(player1);
-            _gameState.State.Players.Add(player2);
+            _gameState.State.Players.Add(player3);
+            _gameState.State.Players.Add(player4);
 
             foreach (var x in _gameState.State.Players)
             {
