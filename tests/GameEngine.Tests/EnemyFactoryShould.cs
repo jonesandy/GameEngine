@@ -1,16 +1,33 @@
 ﻿using System;
 using Xunit;
+using Xunit.Abstractions;
 
-namespace GameEngine.Tests
+namespace GameEngine.Tests 
 {
-    public class EnemyFactoryShould
+    [Trait("Category", "Enemy")]
+    public class EnemyFactoryShould : IDisposable
     {
+        private ITestOutputHelper _output;
+        private EnemyFactory _sut;
+
+        public EnemyFactoryShould(ITestOutputHelper output)
+        {
+            _output = output;
+
+            _output.WriteLine("Creating EnemyFactory");
+            _sut = new EnemyFactory();
+        }
+        
+        public void Dispose()
+        {
+            _output.WriteLine("Disposing of EnemyFactory");
+        }
+
+
         [Fact]
         public void CreateNormalEnemyByDefault()
         {
-            EnemyFactory sut = new EnemyFactory();
-
-            Enemy enemy = sut.Create("Zombie");
+            Enemy enemy = _sut.Create("Zombie");
 
             Assert.IsType<NormalEnemy>(enemy);
         }
@@ -18,9 +35,7 @@ namespace GameEngine.Tests
         [Fact]
         public void CreateBossEnemy()
         {
-            EnemyFactory sut = new EnemyFactory();
-
-            Enemy enemy = sut.Create("Zombie King", true);
+            Enemy enemy = _sut.Create("Zombie King", true);
 
             Assert.IsType<BossEnemy>(enemy);
         }
@@ -28,9 +43,7 @@ namespace GameEngine.Tests
         [Fact]
         public void CreateBossEnemy_AndAssignName()
         {
-            EnemyFactory sut = new EnemyFactory();
-
-            Enemy enemy = sut.Create("Zombie King", true);
+            Enemy enemy = _sut.Create("Zombie King", true);
 
             BossEnemy result = Assert.IsType<BossEnemy>(enemy);
 
@@ -40,9 +53,7 @@ namespace GameEngine.Tests
         [Fact]
         public void CreateBossEnemy_AssertFromAssignableTypes()
         {
-            EnemyFactory sut = new EnemyFactory();
-
-            Enemy enemy = sut.Create("Zombie King", true);
+            Enemy enemy = _sut.Create("Zombie King", true);
 
             Assert.IsAssignableFrom<Enemy>(enemy);
         }
@@ -50,10 +61,8 @@ namespace GameEngine.Tests
         [Fact]
         public void CreateSeperateInstances()
         {
-            EnemyFactory sut = new EnemyFactory();
-
-            Enemy enemy1 = sut.Create("Zombie");
-            Enemy enemy2 = sut.Create("Zombie");
+            Enemy enemy1 = _sut.Create("Zombie");
+            Enemy enemy2 = _sut.Create("Zombie");
 
             Assert.NotSame(enemy1, enemy2);
         }
@@ -61,19 +70,15 @@ namespace GameEngine.Tests
         [Fact]
         public void ThrowExceptionWithNullName()
         {
-            EnemyFactory sut = new EnemyFactory();
-
-            Assert.Throws<ArgumentNullException>(() => sut.Create(null));
-            Assert.Throws<ArgumentNullException>("name", () => sut.Create(null));
+            Assert.Throws<ArgumentNullException>(() => _sut.Create(null));
+            Assert.Throws<ArgumentNullException>("name", () => _sut.Create(null));
         }
 
         [Fact]
         public void OnlyAllowsKingOrQueenBossEnemies()
         {
-            EnemyFactory sut = new EnemyFactory();
-
             EnemyCreationException ex = 
-                Assert.Throws<EnemyCreationException>(() => sut.Create("Zombie", true));
+                Assert.Throws<EnemyCreationException>(() => _sut.Create("Zombie", true));
 
             Assert.Equal("Zombie", ex.RequestedEnemyName);
             Assert.Contains("must end with", ex.Message);
