@@ -3,6 +3,7 @@ using Xunit.Abstractions;
 
 namespace GameEngine.Tests
 {
+    [Trait("Category", "GameState")]
     public class GameStateShould : IClassFixture<GameStateFixture>
     {
         private readonly GameStateFixture _gameState;
@@ -18,10 +19,7 @@ namespace GameEngine.Tests
         public void DamageAllPlayersWhenEarthquake()
         {
             _output.WriteLine($"Using gamestate {_gameState.State.Id}");
-            foreach (var x in _gameState.State.Players)
-            {
-                _output.WriteLine(x.Nickname);
-            }
+            _output.WriteLine($"Number of players in game: {_gameState.State.Players.Count}");
 
             var player1 = new PlayerCharacter();
             var player2 = new PlayerCharacter();
@@ -48,10 +46,7 @@ namespace GameEngine.Tests
         public void Reset()
         {
             _output.WriteLine($"Using gamestate {_gameState.State.Id}");
-            foreach (var x in _gameState.State.Players)
-            {
-                _output.WriteLine(x.Nickname);
-            }
+            _output.WriteLine($"Number of players in game: {_gameState.State.Players.Count}");
 
             var player3 = new PlayerCharacter();
             var player4 = new PlayerCharacter();
