@@ -5,9 +5,9 @@ namespace GameEngine.Tests
     [Trait("Category", "NonPlayer")]
     public class NonPlayerCharacterShould
     {
-        [Trait("Theory", "MemberData")]
+        [Trait("Theory", "HealthDamageData")]
         [Theory]
-        [MemberData(nameof(HealthDamageTestData.TestData), MemberType = typeof(HealthDamageTestData))]
+        [HealthDamageData]
         public void TakeDamage(int damage, int expectedHealth)
         {
             NonPlayerCharacter sut = new NonPlayerCharacter();
