@@ -103,6 +103,7 @@ namespace GameEngine.Tests
             Assert.DoesNotContain("Gun", _sut.Weapons);
         }
 
+        [Trait("Theory", "InlineData")]
         [Theory]
         [InlineData("Sword")]
         [InlineData("Bow")]
