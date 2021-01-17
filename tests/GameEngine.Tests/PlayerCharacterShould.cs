@@ -103,10 +103,12 @@ namespace GameEngine.Tests
             Assert.DoesNotContain("Gun", _sut.Weapons);
         }
 
-        [Fact]
-        public void DoesHaveOneTypeOfSword()
+        [Theory]
+        [InlineData("Sword")]
+        [InlineData("Bow")]
+        public void DoesHaveOneTypeOfEachWeapon(string startinWeapon)
         {
-            Assert.Contains(_sut.Weapons, weapon => weapon.Contains("Sword"));
+            Assert.Contains(_sut.Weapons, weapon => weapon.Contains(startinWeapon));
         }
 
         [Fact]
@@ -130,12 +132,9 @@ namespace GameEngine.Tests
             Assert.PropertyChanged(_sut, "Health", () => _sut.Sleep());
         }
 
-        [Trait("Theory", "InlineData")]
+        [Trait("Theory", "MemberData")]
         [Theory]
-        [InlineData(0, 100)]
-        [InlineData(1, 99)]
-        [InlineData(50, 50)]
-        [InlineData(101, 1)]
+        [MemberData(nameof(HealthDamageTestData.TestData), MemberType = typeof(HealthDamageTestData))]
         public void TakeDamage(int damage, int expectedHealth)
         {
             _sut.TakeDamage(damage);
