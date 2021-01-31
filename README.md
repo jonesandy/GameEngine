@@ -10,9 +10,7 @@
 
 ## About
 
-This repo is for housing practicals following along with a Pluralsight course on testing .NET code with [xUnit](https://xunit.net/) framework. It is one repo in a series of repositories for the Pluralsight xUnit learning pathway.
-
-This course was an introduction to some of the features available inside xunit and to get up and running with this framework.
+This repository is a simple application built following along with a Pluralsight course on testing .NET code with [xUnit](https://xunit.net/) framework. This course was an introduction to some of the features available inside xUnit and to get up and running with this framework.
 
 It was interesting to discover some of the Asserts that are available, how to catagorise tests to enable running of certain subsets of tests, creating data driven tests, and how to share contexts between test methods and test classes.
 
